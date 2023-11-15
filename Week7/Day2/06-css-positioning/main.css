@@ -5,6 +5,8 @@ html, body {
 .container {
     background-color: #2b2d2f;
     position: relative;
+    height: 50px;
+    width: 2000px;
 }
 
 .element {
@@ -17,55 +19,55 @@ html, body {
 
 #yellow-box {
     background-color: #ffff00;
-    /* Fill these in
-    position: ;
+   
+    position: static; /* default positioned element */
     bottom: 0;
     left: 0;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 100px;
+    /* margin-left: 20px; */
     z-index: ;
 }
 
 #pink-box {
     background-color: #ff69b4;
-    /* Fill these in
-    position: ;
+    
+    position: relative;
     bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: ;
+    /* left: 0; */
+    right: 10px;
+    top: 100px;
+    z-index: -10;
 }
 
 #blue-box {
-    background-color: #00eeee;
-    /* Fill these in
-    position: ;
+    background-color: #00eeee; /*looks for parent positioning other than static*/
+    position: absolute;
     bottom: 0;
-    left: 0;
+    left: 30px;
     right: 0;
-    top: 0;
-    z-index: ;
+    top: 0px;
+    z-index: -8;
 }
 
 #red-box {
     background-color: #ff0000;
-    /* Fill these in
-    position: ;
+
+    position: sticky;
     bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: ;
+    left: 0px;
+    right: 20px;
+    top: 20px;
+    z-index: -1;
 }
 
 #orange-box {
     background-color: #ffa500;
-    /* Fill these in
-    position: ;
+ 
+    position: fixed;
     bottom: 0;
-    left: 0;
+    left: 30px;
     right: 0;
-    top: 0;
-    z-index: ;
+    top:20px;
+    z-index: -2;
 }
