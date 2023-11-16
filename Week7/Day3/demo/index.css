@@ -1,0 +1,22 @@
+
+#parent {
+    border: 5px solid red;
+    padding: 5px;
+    display: flex;
+}
+
+.children {
+    height: 100px;
+    width: 100px;
+    border: 2px solid blue;
+
+    flex-basis: fit-content;
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    /* flex: 100% 0 1; */
+}
+
+.extra {
+    /* flex-grow: 4; */
+}
