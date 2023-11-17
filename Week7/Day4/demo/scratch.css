@@ -1,0 +1,12 @@
+#solo {
+    height: 200px;
+    width: 200px;
+    background-color: blueviolet;
+    box-shadow: 0px 0px 10px purple;
+    transition: width 2s, background-color 3s;
+}
+
+#solo:hover {
+    width: 600px;
+    background-color: orangered;
+}
