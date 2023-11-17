@@ -106,7 +106,7 @@ header {
 
 /* Your code here */
 @media print {
-    header, .sidebar, .image-box {
+    header, .sidebar{
         display: none;
     }
 
@@ -116,4 +116,12 @@ header {
         border-radius: 0;
         background-color: white;
     }
+
+    .image-box {
+        position: absolute;
+        width: 100px;
+        top: 3%;
+        right: 10%;
+    }
 }
+
