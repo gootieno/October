@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet">
+    <title>Mid</title>
+</head>
+<body>
+    <header id="header-container">
+        <div id="header-icon-container">
+            <img src="https://miro.medium.com/v2/resize:fit:8978/1*s986xIGqhfsN8U--09_AdA.png" alt="header icon">
+        </div>
+        <nav id="header-nav-container">
+            <a href="#" class="nav-links">Our story</a>
+            <a href="#" class="nav-links">Membership</a>
+            <!-- <button>demo</button>    -->
+            <a href="#" class="nav-links">Write</a>
+            <a href="#" class="nav-links">Sign in</a>
+            <a href="#" class="nav-links nav-button">Get started</a>
+        </nav>
+    </header>
+
+    <div id="main-container">
+        <div id="curious-container">
+            <h1 id="curious-heading" class="curious-text">Stay curious.</h1>
+            <p class="curious-text">Discover stories, thinking, and expertise from writers on any topic.</p>
+            <a href="#" class="nav-button curious-button">Start reading</a>
+        </div>
+
+        <div id="m-container">
+        </div>
+        <script>
+            const mContainer = document.getElementById('m-container')
+
+            for(let i = 0; i < 450; i++){
+                const span = document.createElement('span')
+                span.innerText = "M"
+                mContainer.append(span)
+            }
+        </script>
+    </div>
+</body>
+</html>
