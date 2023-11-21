@@ -89,6 +89,22 @@ const server = http.createServer((req, res) => {
     // Phase 1: GET /dogs
     if (req.method === 'GET' && req.url === '/dogs') {
       // Your code here
+      // serve our static html template to display all dog names
+      const htmlPage = fs.readFileSync("./views/dogs.html", 'utf-8'); // serving static html file
+      // map our dogs array (line 4) and turn each dog name into a list item
+      const dogsList = dogs.map(dog => {
+        return `<li>${dog.name}</li>`
+      })
+      // replace the placeholder (#{dogsList}) with our list item created above
+      const resBody = htmlPage.replace(/#{dogsList}/g, dogsList.join(''))
+      // set status code to 200
+      res.statusCode = 200;
+      // set our header to html
+      res.setHeader("Content-Type", "text/html"); // matching the file i'm serving
+      // send the body
+      res.write(resBody)
+      // res.end()
+      return res.end()
     }
 
     // Phase 2: GET /dogs/new
@@ -106,6 +122,7 @@ const server = http.createServer((req, res) => {
       }
     }
 
+    // BONUS //
     // Phase 4: POST /dogs
     if (req.method === 'POST' && req.url === '/dogs') {
       // Your code here
@@ -143,6 +160,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-const port = 5000;
+const port = 5050;
 
 server.listen(port, () => console.log('Server is listening on port', port));

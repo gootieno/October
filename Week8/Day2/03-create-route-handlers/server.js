@@ -53,14 +53,14 @@ const server = http.createServer((req, res) => {
       const dogId = urlParts[2];
 
       // GET /dogs/:dogId
-      if (urlParts.length === 3) {
+      if (urlParts.length === 3) { // route handler
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain')
         return res.end(`Dog details for dogId: ${dogId}`);
       }
 
       // GET /dogs/:dogId/edit
-      if (urlParts.length === 4 && urlParts[3] === 'edit') {
+      if (urlParts.length === 4 && urlParts[3] === 'edit') { // route handler
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
         return res.end(`Dog edit form page for dogId: ${dogId}`);

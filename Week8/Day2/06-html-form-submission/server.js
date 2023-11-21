@@ -107,6 +107,36 @@ const server = http.createServer((req, res) => {
     }
 
     // Your code here
+    if (req.method === "POST" & req.url === "/cat") {
+      // 1. receive information from the request body
+      const { name, pattern, size, description } = req.body;
+
+      // 2. create a new instance of a cat from Cat class
+      cat = new Cat({
+        name, // name: name
+        pattern,
+        size,
+        description
+      });
+      // cat = new Cat(req.body) // if i have more than what i need from req.body, we could be misleading to say that EVERYTHING is required to create this instance.
+      // 3. set status code to 302: Found
+      res.statusCode = 302;
+      // 4. set our header to "Location" "the url we want to relocate, in this case, "/". "
+      res.setHeader("Location", "/");
+      // 5. res.end()
+      return res.end();
+    }
+
+    if (req.method === "POST" & req.url === "/dog") {
+      // same process as above.
+      const { name, color, age, description } = req.body;
+
+      dog = new Dog({ name, color, age, description });
+      res.statusCode = 302;
+      res.setHeader("Location", "/"); 
+      res.end();
+      return;
+    }
 
     res.statusCode = 404;
     res.end("Page Not Found");
@@ -114,6 +144,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-const port = 5000;
+const port = 5050;
 
 server.listen(port, () => console.log("Server is listening on port", port));
