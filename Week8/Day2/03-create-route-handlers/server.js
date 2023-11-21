@@ -1,3 +1,4 @@
+const { stat } = require('fs');
 const http = require('http');
 
 let nextDogId = 1;
@@ -34,6 +35,46 @@ const server = http.createServer((req, res) => {
     // Do not edit above this line
 
     // define route handlers here
+    if (req.method === 'GET' && req.url === '/') {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain')
+      return res.end('Dog Club');
+    }
+
+    if (req.method === 'GET' && req.url === '/dogs') {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain')
+      return res.end('Dogs index');
+    }
+
+    // BONUS
+    // GET /dogs/:dogId
+    if (req.method === 'GET' && req.url.startsWith('/dogs')) {
+      const urlParts = req.url.split('/') // [ '', 'dogs', '1' ]
+
+      console.log(urlParts)
+      const dogId = urlParts[2];
+
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain')
+      return res.end(`Dog details for dogId: ${dogId}`);
+    }
+
+    // GET /dogs/new
+    if (req.method === 'GET' && req.url === '/dogs/new') {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain')
+      return res.end('Dog create form page');
+    }
+
+    // POST /dogs
+    if (req.method === 'POST' && req.url === '/dogs') {
+      res.statusCode = 302;
+      const dogId = getNewDogId()
+      res.setHeader('Location', `/dogs/${dogId}`)
+      return res.end();
+    }
+
 
     // Do not edit below this line
     // Return a 404 response when there is no matching route handler
@@ -43,6 +84,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-const port = 5000;
+const port = 5050;
 
 server.listen(port, () => console.log('Server is listening on port', port));

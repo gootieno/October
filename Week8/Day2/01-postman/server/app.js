@@ -1,7 +1,7 @@
-//test//
 const express = require('express');
 const fs = require('fs');
 const morgan = require('morgan');
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -42,7 +42,7 @@ let posts = {
 };
 
 let nextPostId = 3;
-let nextCommentId = 3;
+let nextCommentId = 4;
 
 class NotFoundError extends Error {
   constructor(...params) {
@@ -113,7 +113,7 @@ app.post('/posts', (req, res) => {
     comments: []
   };
 
-  posts[postId] = newPost;
+  posts[postId] = newPost; // DB
 
   res.redirect('/posts/' + postId);
 });
@@ -271,6 +271,6 @@ app.use((err, req, res, next) => {
   return res.render('error', data);
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5050;
 
 app.listen(port, () => console.log('Server is listening on port', port));
