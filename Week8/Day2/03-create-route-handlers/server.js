@@ -1,5 +1,4 @@
-const { stat } = require('fs');
-const http = require('http');
+const http = require("http");
 
 let nextDogId = 1;
 
@@ -14,6 +13,7 @@ const server = http.createServer((req, res) => {
 
   let reqBody = "";
   req.on("data", (data) => {
+    //affiliate=nasa&query=mars+rover%21&commit=Search
     reqBody += data;
   });
 
@@ -22,15 +22,15 @@ const server = http.createServer((req, res) => {
     // Parsing the body of the request
     if (reqBody) {
       req.body = reqBody
-        .split("&")
-        .map((keyValuePair) => keyValuePair.split("="))
-        .map(([key, value]) => [key, value.replace(/\+/g, " ")])
-        .map(([key, value]) => [key, decodeURIComponent(value)])
+        .split("&") //[affiliate=nasa,query=mars+rover%21,commit=Search]
+        .map((keyValuePair) => keyValuePair.split("=")) //[[affiliate,nasa],[query,mars+rover%21],[commit,Search]]
+        .map(([key, value]) => [key, value.replace(/\+/g, " ")]) //[[affiliate,nasa],[query,mars rover%21],[commit,Search]]
+        .map(([key, value]) => [key, decodeURIComponent(value)]) //[[affiliate,nasa],[query,mars rover!],[commit,Search]]
         .reduce((acc, [key, value]) => {
           acc[key] = value;
           return acc;
         }, {});
-      console.log(req.body);
+      console.log(req.body); // {key1:val1, key2:val2,...}
     }
     // Do not edit above this line
 
@@ -79,8 +79,8 @@ const server = http.createServer((req, res) => {
     // Do not edit below this line
     // Return a 404 response when there is no matching route handler
     res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain');
-    return res.end('No matching route handler found for this endpoint');
+    res.setHeader("Content-Type", "text/plain");
+    return res.end("No matching route handler found for this endpoint");
   });
 });
 
