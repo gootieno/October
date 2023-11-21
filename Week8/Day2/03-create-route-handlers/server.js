@@ -48,16 +48,23 @@ const server = http.createServer((req, res) => {
     }
 
     // BONUS
-    // GET /dogs/:dogId
     if (req.method === 'GET' && req.url.startsWith('/dogs')) {
       const urlParts = req.url.split('/') // [ '', 'dogs', '1' ]
-
-      console.log(urlParts)
       const dogId = urlParts[2];
 
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain')
-      return res.end(`Dog details for dogId: ${dogId}`);
+      // GET /dogs/:dogId
+      if (urlParts.length === 3) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain')
+        return res.end(`Dog details for dogId: ${dogId}`);
+      }
+
+      // GET /dogs/:dogId/edit
+      if (urlParts.length === 4 && urlParts[3] === 'edit') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+        return res.end(`Dog edit form page for dogId: ${dogId}`);
+      }
     }
 
     // GET /dogs/new
