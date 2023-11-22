@@ -1,5 +1,6 @@
 # W8D2 Notes
 
+
 ## Objectives
 1. Get familiar with a request <> response cycle
 2. Create and host a NodeJS server using `http`
