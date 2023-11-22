@@ -1,5 +1,6 @@
 function stretch() {
   // Your code here
+
 }
 
 function runOnTreadmill() {
@@ -11,6 +12,7 @@ function liftWeights() {
 }
 
 function workout() {
+  //.then(() => nextFunc()) <-- can chain .thens
   // Your code here
 }
 
