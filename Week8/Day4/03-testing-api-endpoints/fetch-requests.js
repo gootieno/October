@@ -16,7 +16,7 @@ const getPosts = () => {
     .then((resBody) => console.log(resBody));
 };
 
-getPosts()
+getPosts();
 
 /* =============================== Phase 2 ================================ */
 /*
@@ -25,3 +25,18 @@ getPosts()
 */
 
 // Your code here
+const createPost = async () => {
+  const res = await fetch("/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      message: "New Post!",
+    }),
+  });
+  const body = await res.json();
+  console.log(body);
+};
+
+createPost();
