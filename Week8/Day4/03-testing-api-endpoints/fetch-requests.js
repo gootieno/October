@@ -10,8 +10,13 @@ Paste your code for fetch requests here once you finish each task.
 */
 
 // Your code here
+const getPosts = () => {
+  fetch("/posts")
+    .then((res) => res.json())
+    .then((resBody) => console.log(resBody));
+};
 
-
+getPosts()
 
 /* =============================== Phase 2 ================================ */
 /*
