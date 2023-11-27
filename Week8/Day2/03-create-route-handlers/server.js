@@ -11,9 +11,8 @@ function getNewDogId() {
 const server = http.createServer((req, res) => {
   console.log(`${req.method} ${req.url}`);
 
-  let reqBody = "";
+  let reqBody = ""; //affiliate=nasa&query=mars+rover%21&commit=Search
   req.on("data", (data) => {
-    //affiliate=nasa&query=mars+rover%21&commit=Search
     reqBody += data;
   });
 
@@ -21,7 +20,7 @@ const server = http.createServer((req, res) => {
   req.on("end", () => {
     // Parsing the body of the request
     if (reqBody) {
-      req.body = reqBody
+      req.body = reqBody //affiliate=nasa&query=mars+rover%21&commit=Search
         .split("&") //[affiliate=nasa,query=mars+rover%21,commit=Search]
         .map((keyValuePair) => keyValuePair.split("=")) //[[affiliate,nasa],[query,mars+rover%21],[commit,Search]]
         .map(([key, value]) => [key, value.replace(/\+/g, " ")]) //[[affiliate,nasa],[query,mars rover%21],[commit,Search]]
