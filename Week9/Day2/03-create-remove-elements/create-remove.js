@@ -4,7 +4,7 @@ add.addEventListener("click", async () => {
   try {
     const res = await fetch("https://dog.ceo/api/breeds/image/random");
     const data = await res.json();
-    console.log('data ', data)
+    console.log("data ", data);
     const url = data.message; // URL of new dog image
     console.log("url ", url);
     /*--------------- Get breed (Hint: Parse from URL) ---------------- */
@@ -35,6 +35,22 @@ add.addEventListener("click", async () => {
 
         append elements in order (stitch them up)
     */
+    const urlParts = url.split("/");
+    console.log("url parts ", urlParts);
+    const dogBreed = urlParts[4];
+
+    const dogsListContainer = document.querySelector("ul");
+    const dogLi = document.createElement("li");
+    const figure = document.createElement("figure");
+    const img = document.createElement("img");
+    const figCaption = document.createElement("figcaption");
+
+    img.setAttribute("src", url);
+    figCaption.innerText = dogBreed;
+
+    figure.append(img, figCaption);
+    dogLi.appendChild(figure);
+    dogsListContainer.appendChild(dogLi);
   } catch (e) {
     console.log("Couldn't fetch dog :(");
   }
@@ -47,6 +63,8 @@ removeFirst.addEventListener("click", () => {
   // Your code here
   /*-------------------- Remove the first dog card --------------------- */
   // Your code here
+  const firstDog = document.querySelector("li");
+  firstDog && firstDog.remove();
 });
 
 /************************** REMOVE LAST DOG BUTTON ***************************/
@@ -56,4 +74,6 @@ removeLast.addEventListener("click", () => {
   // Your code here
   /*-------------------- Remove the last dog card ----------------------- */
   // Your code here
+  const lastDog = document.querySelector('.gallery > ul > li:last-child')
+  lastDog && lastDog.remove()  
 });
