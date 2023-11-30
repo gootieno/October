@@ -49,6 +49,9 @@ add.addEventListener("click", async () => {
     figCaption.innerText = dogBreed;
 
     figure.append(img, figCaption);
+
+    dogLi.style.backgroundColor = "grey";
+
     dogLi.appendChild(figure);
     dogsListContainer.appendChild(dogLi);
   } catch (e) {
@@ -74,6 +77,19 @@ removeLast.addEventListener("click", () => {
   // Your code here
   /*-------------------- Remove the last dog card ----------------------- */
   // Your code here
-  const lastDog = document.querySelector('.gallery > ul > li:last-child')
-  lastDog && lastDog.remove()  
+  const lastDog = document.querySelector(".gallery > ul > li:last-child");
+  lastDog && lastDog.remove();
+});
+
+const themeButton = document.getElementById("theme");
+themeButton.addEventListener("click", () => {
+  //   if (document.body.className.includes("dark-mode")) {
+  //     console.log("dark mode removed");
+  //     document.body.classList.remove("dark-mode");
+  //   } else {
+  //     console.log("dark mode added");
+  //     document.body.classList.add("dark-mode");
+  //   }
+
+  document.body.classList.toggle("dark-mode");
 });
