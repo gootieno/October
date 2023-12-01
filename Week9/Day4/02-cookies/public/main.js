@@ -1,5 +1,17 @@
 /* ============================== PHASE 1 + 2 ============================== */
+const cookieParser = () => {
+    const cookieObj = {}
 
+    // get the cookies
+
+    // isolate key=val with split on '; '
+
+    // iterate and split on '='
+
+    // add the [key,val] to cookie obj
+
+    // return cookieObj
+}
 // For storing user's theme selection in cookies
 function storeTheme(themeName) {
     // Your code here
